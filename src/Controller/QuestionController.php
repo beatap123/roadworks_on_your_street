@@ -10,7 +10,7 @@ class QuestionController
 	*@Route("/")
 	*/
    
-	public function curl_get($url="https://www.kwestiasmaku.com/szukaj?", array $get = array('search_api_views_fulltext' => 'tort'), array $options = array())
+	public function curl_get($url="https://www.kwestiasmaku.com/szukaj?", array $get = array('search_api_views_fulltext' => 'beza'), array $options = array())
         
         {  
             $defaults = array(
