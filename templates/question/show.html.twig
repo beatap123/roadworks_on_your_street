@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %} 
+
+
+{% block title %}Wyszukiwarka przepisów{% endblock %}
+
+{% block body %}
+    
+<h1>Strona do wyszukiwania przepisów z różnych serwisów kulinarnych</h1>
+
+{#comment#}
+<div>
+	<br/>
+	<br/>
+	<form action="http://localhost:8080/wyszukiwarka/public/szukaj" method="post">  {#co zrobić, żeby wygladało lepiej?#}
+	
+	Co chcesz wyszukać? <br/> <input type="text" name="przepis"/> <br/>
+	<input type="submit" value="Szukaj"/>
+	</form>
+	</main>
+</div>
+
+{#
+<ul>
+{% for answer in answers %} 
+    
+    <li>{{ answer }}</li>
+    
+{% endfor %}
+</ul>
+#}
+
+{% endblock %}
