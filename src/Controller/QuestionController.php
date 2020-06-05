@@ -21,12 +21,16 @@ class QuestionController extends AbstractController
 
     
 	/**
-	*@Route("/szukaj") //dodać 'przepis?
+	*@Route("/szukaj")
 	*/
         
-	public function curl_get($url="https://www.kwestiasmaku.com/szukaj?", array $get = array('search_api_views_fulltext' => 'beza'), array $options = array())
+	public function curl_get()
         
-        {  
+        {   $przepis = $_POST['przepis'];
+            $url="https://www.kwestiasmaku.com/szukaj?";
+            $get = array('search_api_views_fulltext' => $przepis);
+            $options = array();
+            
             $defaults = array(
                 CURLOPT_URL => $url. (strpos($url, '?') === FALSE ? '?' : ''). http_build_query($get),  //=== oznacza identyczne
                 CURLOPT_HEADER => 0,
@@ -42,7 +46,7 @@ class QuestionController extends AbstractController
                 trigger_error(curl_error($ch));
             }
             curl_close($ch);
-            
+
             return new Response($result);
             //'answers' => $answers, to sie przyda to umieszczenia $przepis w array
             
