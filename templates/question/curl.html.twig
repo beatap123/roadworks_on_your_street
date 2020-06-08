@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %} 
+
+
+{% block title %}Wyniki wyszukiwania{% endblock %}
+
+{% block body %}
+    
+<h1>Strona do prezentowania wyników wyszukiwania</h1>
+
+{#comment#}
+<div>
+	<br/>
+	<br/>
+	<iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="300"
+    height="200"
+    src={{ result }}>
+</iframe>
+<iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="300"
+    height="200"
+    src="https://www.kwestiasmaku.com/szukaj?search_api_views_fulltext=gulasz">
+</iframe>
+	
+</div>
+
+{#
+<ul>
+{% for answer in answers %} 
+    
+    <li>{{ answer }}</li>
+    
+{% endfor %}
+</ul>
+#}
+{# the JS file lives at "public/bundles/acme/js/loader.js" #}
+
+{% endblock %}

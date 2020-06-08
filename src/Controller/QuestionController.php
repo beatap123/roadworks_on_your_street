@@ -13,10 +13,7 @@ class QuestionController extends AbstractController
 	
 	public function searching()
 	{
-                return $this->render('question/show.html.twig',[
-                    'question'=> 'question',
-                    'answers' => 'answers',
-               ]);
+                return $this->render('question/show.html.twig');
 	}
 
     
@@ -47,9 +44,11 @@ class QuestionController extends AbstractController
             }
             curl_close($ch);
 
-            return new Response($result);
-            //'answers' => $answers, to sie przyda to umieszczenia $przepis w array
-            
+            //return new Response($result);
+            return $this->render('question/curl.html.twig',
+                    ['result'=>new Response($result)]
+               );
+                        
         }
 	
        
