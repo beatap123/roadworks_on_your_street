@@ -5,6 +5,6 @@
  */
 
 
-document.querySelector('html').onclick = function() {
-    alert('Ouch! Stop poking me!');
+document.querySelector('button').onclick = function() {
+    alert('Zostajesz przeniesiony na stronę z wynikami');
 }
