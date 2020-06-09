@@ -4,6 +4,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpClient\HttpClient;
 
 class QuestionController extends AbstractController
 {
@@ -23,31 +24,25 @@ class QuestionController extends AbstractController
         
 	public function curl_get()
         
-        {   $przepis = $_POST['przepis'];
-            $url="https://www.kwestiasmaku.com/szukaj?";
-            $get = array('search_api_views_fulltext' => $przepis);
-            $options = array();
+        {   //$przepis = $_POST['przepis'];
+            //$url="https://www.kwestiasmaku.com/szukaj?";
+            //$get = array('search_api_views_fulltext' => $przepis);
+
             
-            $defaults = array(
-                CURLOPT_URL => $url. (strpos($url, '?') === FALSE ? '?' : ''). http_build_query($get),  //=== oznacza identyczne
-                CURLOPT_HEADER => 0,
-                CURLOPT_RETURNTRANSFER => TRUE,
-                CURLOPT_TIMEOUT => 4
-            );
+            $client = HttpClient::create();
+            $response = $client->request('GET', 'https://www.kwestiasmaku.com/szukaj?');
 
-            $ch = curl_init();
-            curl_setopt_array($ch, ($options + $defaults));
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            if( ! $result = curl_exec($ch))
-            {
-                trigger_error(curl_error($ch));
-            }
-            curl_close($ch);
+            $statusCode = $response->getStatusCode();
+            // $statusCode = 200
+            $contentType = $response->getHeaders()['content-type'][0];
+            // $contentType = 'application/json'
+            $content = $response->getContent();
+            // $content = '{"id":521583, "name":"symfony-docs", ...}
 
-            //return new Response($result);
-            return $this->render('question/curl.html.twig',
-                    ['result'=>new Response($result)]
-               );
+            return new Response($content);
+            //return $this->render('question/curl.html.twig',
+                    //['result'=>$response]
+              //);
                         
         }
 	
