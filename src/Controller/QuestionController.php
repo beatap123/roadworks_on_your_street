@@ -24,14 +24,20 @@ class QuestionController extends AbstractController
         
 	public function curl_get()
         
-        {   //$przepis = $_POST['przepis'];
+        {   $przepis = $_POST['przepis'];
             //$url="https://www.kwestiasmaku.com/szukaj?";
             //$get = array('search_api_views_fulltext' => $przepis);
 
             
             $client = HttpClient::create();
-            $response = $client->request('GET', 'https://www.kwestiasmaku.com/szukaj?');
-
+            // it makes an HTTP GET request to https://httpbin.org/get?token=...&name=...
+            $response = $client->request('GET', 'https://www.kwestiasmaku.com/szukaj?', [
+                'query' => [
+                    'search_api_views_fulltext' => $przepis,
+                ],
+            ]);
+            
+            
             $statusCode = $response->getStatusCode();
             // $statusCode = 200
             $contentType = $response->getHeaders()['content-type'][0];
@@ -39,10 +45,10 @@ class QuestionController extends AbstractController
             $content = $response->getContent();
             // $content = '{"id":521583, "name":"symfony-docs", ...}
 
-            return new Response($content);
-            //return $this->render('question/curl.html.twig',
-                    //['result'=>$response]
-              //);
+            //return new Response($content);
+            return $this->render('question/curl.html.twig',
+                    ['result'=>$response]
+              );                                         //do zrobienia: coś, żeby to pokazać w iframe
                         
         }
 	
