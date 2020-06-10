@@ -45,7 +45,6 @@ class QuestionController extends AbstractController
             $content = $response->getContent();
             // $content = '{"id":521583, "name":"symfony-docs", ...}
 
-            //return new Response($content);
             return $this->render('question/curl.html.twig',
                     ['result'=>$response]
               );                                         //do zrobienia: coś, żeby to pokazać w iframe
