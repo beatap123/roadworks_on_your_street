@@ -44,10 +44,17 @@ class QuestionController extends AbstractController
             // $contentType = 'application/json'
             $content = $response->getContent();
             // $content = '{"id":521583, "name":"symfony-docs", ...}
+            
+            echo "Poniżej znajdują się wyniki wyszukiwania hasła '$przepis'";
+            echo "<table BORDER width='47%' cellspacing='0' cellpadding='0'>
+                    <tr><td width='100'>$content</td></tr>
+                    </table>";
+            //return new Response($content);
+    
 
-            return $this->render('question/curl.html.twig',
-                    ['result'=>$response]
-              );                                         //do zrobienia: coś, żeby to pokazać w iframe
+            /*return $this->render('question/curl.html.twig',
+                    ['result'=>$response*/
+              //);                            
                         
         }
 	
