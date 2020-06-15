@@ -22,31 +22,7 @@ class QuestionController extends AbstractController
 	*@Route("/szukaj")
 	*/
         
-	public function curl_get()
-        
-        {   $przepis = $_POST['przepis'];
-            //$url="https://www.kwestiasmaku.com/szukaj?";
-            //$get = array('search_api_views_fulltext' => $przepis);
-
-            
-            $client = HttpClient::create();
-            // it makes an HTTP GET request to https://httpbin.org/get?token=...&name=...
-            $response = $client->request('GET', 'https://www.kwestiasmaku.com/szukaj?', [
-                'query' => [
-                    'search_api_views_fulltext' => $przepis,
-                ],
-            ]);
-            
-            
-            $statusCode = $response->getStatusCode();
-            // $statusCode = 200
-            $contentType = $response->getHeaders()['content-type'][0];
-            // $contentType = 'application/json'
-            $content = $response->getContent();
-            // $content = '{"id":521583, "name":"symfony-docs", ...}
-             
-           return new Response($content);
-           
+	
            
             /*return $this->render('question/curl.html.twig',
                     ['result'=>new Response($content)]

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %} 
 
 
-{% block title %}Wyszukiwarka przepisów{% endblock %}
+{% block title %} Pogoda na przystanku {% endblock %}
 
 {% block body %}
     
-<h1>Strona do wyszukiwania przepisów z różnych serwisów kulinarnych</h1>
+<h1>Czy na Twoim przystanku właśnie pada deszcz? Sprawdź to!</h1>
 
 {#comment#}
 <div>
 	<br/>
 	<br/>
 	<form action="http://localhost:8080/wyszukiwarka/public/szukaj" method="post">  {#co zrobić, żeby wygladało lepiej?#}
-	Co chcesz wyszukać? <br/> <input type="text" name="przepis"/> <br/>
+	Jaki przystanek chcesz wyszukać? <br/> <input type="text" name="przepis"/> <br/>
 	<button type="submit" class="button todo-form-button">Szukaj</button>
 	</form>
 	</main>
