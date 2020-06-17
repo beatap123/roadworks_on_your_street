@@ -26,14 +26,17 @@ class QuestionController extends AbstractController
         {    
         $przystanek = $_POST['przystanek'];
             //$url=https://api.um.warszawa.pl/api/action/dbstore_get?id=ab75c33d-3a26-4342-b36a-6e5fef0a3ac3&sortBy=id&apikey=wartość
-            //$get = array('search_api_views_fulltext' => $przepis);
+            
 
-            
-            $client = HttpClient::create();
-            // it makes an HTTP GET request to https://httpbin.org/get?token=...&name=...
-            $response = $client->request('GET', 'https://api.um.warszawa.pl/api/action/dbstore_get'
-           );
-            
+
+            $client = HttpClient::createForBaseUri('https://api.um.warszawa.pl/api/action/dbstore_get', 
+                    [
+                    'auth_basic' => ['beatap', 'bex8zcFauQLRmJv']
+            ]);
+            $response = $client->request('GET', 'https://api.um.warszawa.pl/api/action/dbstore_get', [
+            // use a different HTTP Basic authentication only for this request
+            'auth_basic' => ['beatap', 'bex8zcFauQLRmJv']
+             ]);
             $statusCode = $response->getStatusCode();
             // $statusCode = 200
             $contentType = $response->getHeaders()['content-type'][0];
