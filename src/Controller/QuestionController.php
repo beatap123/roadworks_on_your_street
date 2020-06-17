@@ -25,15 +25,14 @@ class QuestionController extends AbstractController
         public function bus_stops()
         {    
         $przystanek = $_POST['przystanek'];
-            //$url=https://api.um.warszawa.pl/api/action/dbstore_get?id=ab75c33d-3a26-4342-b36a-6e5fef0a3ac3&sortBy=id&apikey=wartość
-            
+        //APIKey: a054cce1-28f7-4f3d-9b06-7d682f3bd9b6
 
 
-            $client = HttpClient::createForBaseUri('https://api.um.warszawa.pl/api/action/dbstore_get', 
+            $client = HttpClient::createForBaseUri('https://api.um.warszawa.pl/api/action/dbtimetable_get', 
                     [
                     'auth_basic' => ['beatap', 'bex8zcFauQLRmJv']
             ]);
-            $response = $client->request('GET', 'https://api.um.warszawa.pl/api/action/dbstore_get', [
+            $response = $client->request('GET', 'https://api.um.warszawa.pl/api/action/dbtimetable_get', [
             // use a different HTTP Basic authentication only for this request
             'auth_basic' => ['beatap', 'bex8zcFauQLRmJv']
              ]);
