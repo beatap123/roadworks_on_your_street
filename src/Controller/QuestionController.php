@@ -24,25 +24,19 @@ class QuestionController extends AbstractController
         
         public function bus_stops()
         {    
-        $nazwaprzystanku = $_POST['przystanek'];
+        //$nazwaprzystanku = $_POST['przystanek'];
         //APIKey: a054cce1-28f7-4f3d-9b06-7d682f3bd9b6 -> dodać za pomocą odpowiedniej funkcji
 
 
-            $client = HttpClient::createForBaseUri('https://api.um.warszawa.pl/api/action/dbtimetable_get?id=b27f4c17-5c50-4a5b-89dd-236b282bc499&name=nazwaprzystanku&apikey=wartość', 
+            $client = HttpClient::createForBaseUri('https://api.um.warszawa.pl/api/action/wfsstore_get?id=e30b724d-0bac-4a4e-8ea8-085c136fe345&circle=21.02,52.21,1000&apikey=a054cce1-28f7-4f3d-9b06-7d682f3bd9b6', 
                     [
                     'auth_basic' => ['beatap', 'bex8zcFauQLRmJv'],
-                    'query' => [
-                            'apikey' => 'a054cce1-28f7-4f3d-9b06-7d682f3bd9b6',
-                            'name' => $nazwaprzystanku
-                        ]    
+ 
             ]);
-            $response = $client->request('GET', 'https://api.um.warszawa.pl/api/action/dbtimetable_get?id=b27f4c17-5c50-4a5b-89dd-236b282bc499&name=nazwaprzystanku&apikey=wartość', 
+            $response = $client->request('GET',    'https://api.um.warszawa.pl/api/action/wfsstore_get?id=e30b724d-0bac-4a4e-8ea8-085c136fe345&circle=21.02,52.21,1000&apikey=a054cce1-28f7-4f3d-9b06-7d682f3bd9b6', 
            [
                     'auth_basic' => ['beatap', 'bex8zcFauQLRmJv'],
-                    'query' => [
-                            'apikey' => 'a054cce1-28f7-4f3d-9b06-7d682f3bd9b6',
-                            'name' => $nazwaprzystanku
-                        ]
+
             ]);
             
             $statusCode = $response->getStatusCode();
