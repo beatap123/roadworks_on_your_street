@@ -67,7 +67,7 @@ class QuestionController extends AbstractController
 
             $client = HttpClient::create();
             
-            $response = $client->request('GET','http://samples.openweathermap.org/data/2.5/weather?q=London,uk', 
+            $response = $client->request('GET','http://api.openweathermap.org/data/2.5/weather?q=Warszawa', 
            
                     [        'auth_basic' => ['beatap', 'H7REvQ3pXiM3Xnc'],
                     'query' => [
