@@ -24,7 +24,6 @@ class QuestionController extends AbstractController
         
         public function bus_stops()
         {    
-        //$nazwaprzystanku = $_POST['przystanek'];
         //APIKey: a054cce1-28f7-4f3d-9b06-7d682f3bd9b6 -> dodać za pomocą odpowiedniej funkcji
 
             $client = HttpClient::create();
