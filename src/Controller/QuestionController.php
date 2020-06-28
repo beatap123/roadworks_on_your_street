@@ -28,11 +28,11 @@ class QuestionController extends AbstractController
 
             $client = HttpClient::create();
             
-            $response = $client->request('GET','https://api.um.warszawa.pl/api/action/wfsstore_get?id=a08136ec-1037-4029-9aa5-b0d0ee0b9d88&circle=21.02,52.21,1000', 
+            $response = $client->request('GET','https://api.um.warszawa.pl/api/action/datastore_search?resource_id=ed6217dd-c8d0-4f7b-8bed-3b7eb81a95ba&q=Wola', 
            [
                     'auth_basic' => ['beatap', 'bex8zcFauQLRmJv'],
                     'query' => [
-                            'apikey' => 'a054cce1-28f7-4f3d-9b06-7d682f3bd9b6'
+                            //'apikey' => 'a054cce1-28f7-4f3d-9b06-7d682f3bd9b6'
                             //'name' => $nazwaprzystanku
                         ]   
             ]);
