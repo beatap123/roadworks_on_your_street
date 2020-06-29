@@ -28,12 +28,12 @@ class QuestionController extends AbstractController
 
             $client = HttpClient::create();
             
-            $response = $client->request('GET','https://api.um.warszawa.pl/api/action/datastore_search?resource_id=ed6217dd-c8d0-4f7b-8bed-3b7eb81a95ba&q=Wola', 
+            $response = $client->request('GET','https://api.dane.gov.pl/datasets/469,adresy-mst-warszawy', 
            [
                     'auth_basic' => ['beatap', 'bex8zcFauQLRmJv'],
                     'query' => [
                             //'apikey' => 'a054cce1-28f7-4f3d-9b06-7d682f3bd9b6'
-                            //'name' => $nazwaprzystanku
+                            'adres' => 'Mokotowska'
                         ]   
             ]);
             
