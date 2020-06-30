@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %} 
 
 
-{% block title %} Pogoda na przystanku {% endblock %}
+{% block title %} Pogoda na Twojej ulicy {% endblock %}
 
 {% block body %}
     
@@ -12,7 +12,7 @@
 	<br/>
 	<br/>
 	<form action="http://localhost:8080/wyszukiwarka/public/szukaj" method="post">  {#co zrobić, żeby wygladało lepiej?#}
-	Jaką ulicę chcesz wyszukać? <br/> <input type="text" name="przystanek"/> <br/>
+	Jaką ulicę chcesz wyszukać? <br/> <input type="text" name="ulica"/> <br/>
 	<button type="submit" class="button todo-form-button">Szukaj</button>
 	</form>
 	</main>
