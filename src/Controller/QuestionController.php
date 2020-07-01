@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+use Doctrine\DBAL\Driver\Connection;
 
 class QuestionController extends AbstractController
 {
@@ -64,4 +65,16 @@ class QuestionController extends AbstractController
            return new Response($content);
         }
         
+       
+        /**
+        * @Route("/test", name="test")
+        */
+       public function test(Connection $connection)
+       {
+           $dbc = $connection->fetchAssoc(
+               "SELECT * FROM adresywaw WHERE dzielnica='Bemowo'"
+           ); 
+
+           print_r($dbc);
+       }
 }
