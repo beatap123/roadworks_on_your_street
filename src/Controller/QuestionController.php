@@ -23,18 +23,22 @@ class QuestionController extends AbstractController
 	*@Route("/szukaj")
 	*/
         
-        public function searching_street()
-        {    
-  
-        
-      
-           
+        public function searching_street(Connection $connection)
+        {
+           $ulica = $_POST['ulica']; 
+           $adresy = $connection->fetchAll(
+		sprintf("SELECT x,y FROM adresywaw WHERE nazwa_peln='ulica %s'",
+		$ulica));
+
+            print_r($adresy);
+            
+                       
             /*return $this->render('question/curl.html.twig',
                     ['result'=>new Response($content)]
               );      */                  
                         
         }
-	
+
        /**
 	*@Route("/pogoda")
 	*/
@@ -64,17 +68,4 @@ class QuestionController extends AbstractController
              
            return new Response($content);
         }
-        
-       
-        /**
-        * @Route("/test", name="test")
-        */
-       public function test(Connection $connection)
-       {
-           $dbc = $connection->fetchAssoc(
-               "SELECT * FROM adresywaw WHERE dzielnica='Bemowo'"
-           ); 
-
-           print_r($dbc);
-       }
 }
