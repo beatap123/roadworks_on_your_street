@@ -8,3 +8,6 @@
 document.querySelector('button').onclick = function() {
     alert('Zostajesz przeniesiony na stronę z wynikami');
 }
+
+var yourDiv = document.getElementById('your-div');
+var yourArray = JSON.parse(yourDiv.dataset.yourArray); 

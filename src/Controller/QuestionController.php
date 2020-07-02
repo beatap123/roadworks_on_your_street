@@ -27,15 +27,14 @@ class QuestionController extends AbstractController
         {
            $ulica = $_POST['ulica']; 
            $adresy = $connection->fetchAll(
-		sprintf("SELECT x,y FROM adresywaw WHERE nazwa_peln='ulica %s'",
+		sprintf("SELECT nazwa_peln,x,y FROM adresywaw WHERE nazwa_peln='ulica %s'",
 		$ulica));
 
-            print_r($adresy);
             
                        
-            /*return $this->render('question/curl.html.twig',
-                    ['result'=>new Response($content)]
-              );      */                  
+        return $this->render('question/curl.html.twig',
+                    ['results'=>$adresy]
+              );                  
                         
         }
 
@@ -43,21 +42,19 @@ class QuestionController extends AbstractController
 	*@Route("/pogoda")
 	*/
         
-        public function weather_api()
+        public function roboty_drogowe()
                 
         {
-            //APIKey: 360938ff9c895d925dc406829c29353a -> dodać za pomocą odpowiedniej funkcji
-
+            
             $client = HttpClient::create();
             
-            $response = $client->request('GET','http://api.openweathermap.org/data/2.5/weather?q=Warszawa', 
+            $response = $client->request('GET','https://api.um.warszawa.pl/api/action/get_open_invests?resource_id=26b9ade1-f5d4-439e-84b4-9af37ab7ebf1&apikey=a054cce1-28f7-4f3d-9b06-7d682f3bd9b6&pageSize=7&StartIndex=1&streetName=mokotowska', 
            
+            //$apikey = 'a054cce1-28f7-4f3d-9b06-7d682f3bd9b6'
+            
                     [        'auth_basic' => ['beatap', 'H7REvQ3pXiM3Xnc'],
-                    'query' => [
-                            'appid' => '360938ff9c895d925dc406829c29353a'
-                            //'name' => $nazwaprzystanku JEST PROBLEM Z MAP SERVER
                         ]   
-            ]);
+            );
             
             $statusCode = $response->getStatusCode();
             // $statusCode = 200
