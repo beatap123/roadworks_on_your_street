@@ -5,37 +5,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
-use Doctrine\DBAL\Driver\Connection;
 
-class QuestionController extends AbstractController
+class SearchingController extends AbstractController
 {
-     /**
-	*@Route("/") 
-	*/
-	
-	public function searching()
-	{
-                return $this->render('question/show.html.twig');
-	}
-
-    
-	/**
-	*@Route("/szukaj")
-	*/
-        
-        public function searching_street(Connection $connection)
-        {
-           $ulica = $_POST['ulica']; 
-           $adresy = $connection->fetchAll(
-		sprintf("SELECT nazwa_peln FROM adresywaw WHERE nazwa_peln='ulica %s'",
-		$ulica));
-
-                       
-        return $this->render('question/curl.html.twig',
-                    ['results'=>$adresy]
-              );            
-                        
-        }
 
         /**
 	*@Route("/szukaj")
