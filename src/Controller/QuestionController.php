@@ -30,30 +30,16 @@ class QuestionController extends AbstractController
 		sprintf("SELECT nazwa_peln FROM adresywaw WHERE nazwa_peln='ulica %s'",
 		$ulica));
 
-                       
-        return $this->render('question/curl.html.twig',
-                    ['results'=>$adresy]
-              );            
-                        
-        }
 
-        /**
-	*@Route("/szukaj")
-	*/
-        
-        public function roboty_drogowe()
-                
-        {
             
             $client = HttpClient::create();
              
-            
             
             $response = $client->request('GET','https://api.um.warszawa.pl/api/action/get_open_invests?resource_id=26b9ade1-f5d4-439e-84b4-9af37ab7ebf1&apikey=a054cce1-28f7-4f3d-9b06-7d682f3bd9b6&pageSize=7&StartIndex=1', 
                         
                     [        'auth_basic' => ['beatap', 'H7REvQ3pXiM3Xnc'],
                         'query' => [
-                            'streetName' => $_POST['ulica']
+                            'streetName' => $ulica
                         ]   
                     
             ]);
