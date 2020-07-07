@@ -25,12 +25,7 @@ class QuestionController extends AbstractController
         
         public function searching_street(Connection $connection)
         {
-           $ulica = $_POST['ulica']; 
-           $adresy = $connection->query(
-		sprintf("INSERT INTO adresywaw (dzielnica,nazwa_peln,nazwa_skr,x,y,kod) VALUES (NULL, '%s',NULL, NULL, NULL, NULL)",
-		$ulica));
-           
-            print_r($adresy);
+
            
 
 
@@ -42,7 +37,7 @@ class QuestionController extends AbstractController
                         
                     [        'auth_basic' => ['beatap', 'H7REvQ3pXiM3Xnc'],
                         'query' => [
-                            'streetName' => $ulica
+                            'streetName' => $_POST['ulica']
                         ]   
                     
             ]);
@@ -55,5 +50,13 @@ class QuestionController extends AbstractController
             // $content = '{"id":521583, "name":"symfony-docs", ...}
              
            return new Response($content);
+           
+                      /* zapisać to wszystko do bazy danych, pewnie poprzez foreach w tabeli, bo tyle ile Item tyle razy for
+           $adresy = $connection->query(
+		sprintf("INSERT INTO robotywawa (Name,Street,StartDate,EndDate) VALUES (..........)",
+		$ulica));
+           
+            print_r($adresy);*/
+           
         }
 }
