@@ -26,9 +26,12 @@ class QuestionController extends AbstractController
         public function searching_street(Connection $connection)
         {
            $ulica = $_POST['ulica']; 
-           $adresy = $connection->fetchAll(
-		sprintf("SELECT nazwa_peln FROM adresywaw WHERE nazwa_peln='ulica %s'",
+           $adresy = $connection->query(
+		sprintf("INSERT INTO adresywaw (dzielnica,nazwa_peln,nazwa_skr,x,y,kod) VALUES (NULL, '%s',NULL, NULL, NULL, NULL)",
 		$ulica));
+           
+            print_r($adresy);
+           
 
 
             
