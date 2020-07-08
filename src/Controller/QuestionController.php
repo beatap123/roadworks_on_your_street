@@ -49,14 +49,15 @@ class QuestionController extends AbstractController
             $content = $response->getContent();
             // $content = '{"id":521583, "name":"symfony-docs", ...}
              
-           return new Response($content);
            
-                      /* zapisać to wszystko do bazy danych, pewnie poprzez foreach w tabeli, bo tyle ile Item tyle razy for
+           
+                      // zapisać to wszystko do bazy danych, pewnie poprzez foreach w tabeli, bo tyle ile Item tyle razy for
            $adresy = $connection->query(
-		sprintf("INSERT INTO robotywawa (Name,Street,StartDate,EndDate) VALUES (..........)",
+		sprintf("INSERT INTO robotywawa (Name,Street,StartDate,EndDate) VALUES ()",
 		$ulica));
            
-            print_r($adresy);*/
+            print_r($adresy);
+            return new Response($content);
            
         }
 }
