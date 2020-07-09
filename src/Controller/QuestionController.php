@@ -51,12 +51,14 @@ class QuestionController extends AbstractController
              
            
            
-                      // zapisać to wszystko do bazy danych, pewnie poprzez foreach w tabeli, bo tyle ile Item tyle razy for
-           $adresy = $connection->query(
-		sprintf("INSERT INTO robotywawa (Name,Street,StartDate,EndDate) VALUES ()",
-		$ulica));
+           //for ($i=1;$i<=6;$i++)
+           //{
+           $adresy = $connection->query
+		("INSERT INTO Roboty VALUES ('Name','Street','StartDate','EndDate')"
+		);
            
             print_r($adresy);
+           //}
             return new Response($content);
            
         }
