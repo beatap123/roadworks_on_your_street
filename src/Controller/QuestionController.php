@@ -1,11 +1,15 @@
 <?php
 namespace App\Controller;
 
+
+use App\Entity\Roboty;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
 use Doctrine\DBAL\Driver\Connection;
+use DateTime;
 
 class QuestionController extends AbstractController
 {
@@ -50,15 +54,23 @@ class QuestionController extends AbstractController
             // $content = '{"id":521583, "name":"symfony-docs", ...}
              
            
+            $entityManager = $this->getDoctrine()->getManager();
+            
+            $product = new Roboty();
+            $product->setName('roboty takie');
+            $product->setStreet('Mokotowska');
+            $product->setStartDate(new DateTime());
+            $product->setEndDate(new DateTime());
+            
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+           //$adresy = $connection->query
+		//("INSERT INTO robotywawa VALUES (NULL, 'Name','Street','StartDate','EndDate')"
+		//);
            
-           //for ($i=1;$i<=6;$i++)
-           //{
-           $adresy = $connection->query
-		("INSERT INTO Roboty VALUES ('Name','Street','StartDate','EndDate')"
-		);
-           
-            print_r($adresy);
-           //}
+           // print_r($adresy);//
+
             return new Response($content);
            
         }
