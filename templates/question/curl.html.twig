@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %} 
 
 
-{% block title %} Pogoda na Twojej ulicy {% endblock %}
+{% block title %} Roboty drogowe na Twojej ulicy {% endblock %}
 
 {% block body %}
+
+{#<ul>
+{% for item in items %} 
     
+    <li>{{ item }}</li>
+    
+{% endfor %}
+</ul> #}
     
 data: {{ results | json_encode | raw }}
 <div id="your-div" data-results="{{ results|json_encode|e('html_attr') }}">
-{# the JS file lives at "public/bundles/acme/js/loader.js" #}
 
 {% endblock %}

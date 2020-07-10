@@ -47,13 +47,13 @@ class QuestionController extends AbstractController
             ]);
             
             $statusCode = $response->getStatusCode();
-            // $statusCode = 200
             $contentType = $response->getHeaders()['content-type'][0];
-            // $contentType = 'application/json'
             $content = $response->getContent();
-            // $content = '{"id":521583, "name":"symfony-docs", ...}
              
-           
+             
+            
+            
+            
             $entityManager = $this->getDoctrine()->getManager();
             
             $product = new Roboty();
@@ -65,13 +65,10 @@ class QuestionController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-           //$adresy = $connection->query
-		//("INSERT INTO robotywawa VALUES (NULL, 'Name','Street','StartDate','EndDate')"
-		//);
-           
-           // print_r($adresy);//
-
             return new Response($content);
+            /*return $this->render('question/curl.html.twig',
+                    [ 'results' => $content,
+                    ]);*/
            
         }
 }
