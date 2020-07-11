@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
+
 use Doctrine\DBAL\Driver\Connection;
 use DateTime;
 
@@ -29,10 +30,6 @@ class QuestionController extends AbstractController
         
         public function searching_street(Connection $connection)
         {
-
-           
-
-
             
             $client = HttpClient::create();
              
@@ -41,17 +38,20 @@ class QuestionController extends AbstractController
                         
                     [        'auth_basic' => ['beatap', 'H7REvQ3pXiM3Xnc'],
                         'query' => [
-                            'streetName' => $_POST['ulica']
+                            'streetName' => $_POST['ulica'],
+                              'headers' => [
+                    'Accept' => 'application/json',
+
+                                 ]
                         ]   
                     
             ]);
-            
+
             $statusCode = $response->getStatusCode();
-            $contentType = $response->getHeaders()['content-type'][0];
             $content = $response->getContent();
              
              
-            
+
             
             
             $entityManager = $this->getDoctrine()->getManager();
@@ -66,9 +66,16 @@ class QuestionController extends AbstractController
             $entityManager->flush();
 
             return new Response($content);
-            /*return $this->render('question/curl.html.twig',
+            return $this->render('question/curl.html.twig',
                     [ 'results' => $content,
-                    ]);*/
+                    ]);
            
         }
+            public function setCharset(string $charset): object
+            {
+                $this->charset = $charset;
+                $charset = $this->charset ?: 'UTF-8';
+
+                return $this;
+            }
 }

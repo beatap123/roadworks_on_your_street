@@ -4,7 +4,8 @@
 {% block title %} Roboty drogowe na Twojej ulicy {% endblock %}
 
 {% block body %}
-
+ <meta charset="UTF-8" />
+ 
 {#<ul>
 {% for item in items %} 
     
@@ -12,8 +13,6 @@
     
 {% endfor %}
 </ul> #}
-    
-data: {{ results | json_encode | raw }}
-<div id="your-div" data-results="{{ results|json_encode|e('html_attr') }}">
 
+{{ results | raw | convert_encoding('UTF-8', 'ISO-8859-1') }}
 {% endblock %}
