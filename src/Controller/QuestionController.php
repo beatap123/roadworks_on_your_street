@@ -65,7 +65,7 @@ class QuestionController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return new Response($content);
+            //return new Response($content);
             return $this->render('question/curl.html.twig',
                     [ 'results' => $content,
                     ]);
