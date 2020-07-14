@@ -38,19 +38,22 @@ class QuestionController extends AbstractController
                         
                     [        'auth_basic' => ['beatap', 'H7REvQ3pXiM3Xnc'],
                         'query' => [
-                            'streetName' => $_POST['ulica'],
+                            'streetName' => filter_input(INPUT_POST, 'ulica') ],
                               'headers' => [
-                    'Accept' => 'application/json',
+                    'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept-Language' => 'pl,en-US;q=0.7,en;q=0.',
+                    'Accept-Encoding' => 'gzip, deflate, br'
 
                                  ]
-                        ]   
+                         
                     
             ]);
-
+            
             $statusCode = $response->getStatusCode();
+            $contentType = $response->getHeaders()['content-type'][0];
             $content = $response->getContent();
              
-             
+ 
 
             
             
@@ -65,7 +68,8 @@ class QuestionController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            //return new Response($content);
+            
+            
             return $this->render('question/curl.html.twig',
                     [ 'results' => $content,
                     ]);
