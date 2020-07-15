@@ -8,7 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
-
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Doctrine\DBAL\Driver\Connection;
 use DateTime;
 
@@ -53,8 +55,11 @@ class QuestionController extends AbstractController
             $contentType = $response->getHeaders()['content-type'][0];
             $content = $response->getContent();
              
- 
+            $encoders = [new JsonEncoder()];
+            $normalizers = [new ObjectNormalizer()];
 
+            $serializer = new Serializer($normalizers, $encoders);
+            $person = $serializer->serialize($content, 'json');
             
             
             $entityManager = $this->getDoctrine()->getManager();
@@ -71,7 +76,7 @@ class QuestionController extends AbstractController
             
             
             return $this->render('question/curl.html.twig',
-                    [ 'results' => $content,
+                    [ 'results' => $person,
                     ]);
            
         }
