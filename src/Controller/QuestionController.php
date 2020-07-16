@@ -80,11 +80,4 @@ class QuestionController extends AbstractController
                     ]);
            
         }
-            public function setCharset(string $charset): object
-            {
-                $this->charset = $charset;
-                $charset = $this->charset ?: 'UTF-8';
-
-                return $this;
-            }
 }
