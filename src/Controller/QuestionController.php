@@ -42,7 +42,6 @@ class QuestionController extends AbstractController
                         'query' => [
                             'streetName' => filter_input(INPUT_POST, 'ulica') ],
                               'headers' => [
-                    'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                     'Accept-Language' => 'pl,en-US;q=0.7,en;q=0.',
                     'Accept-Encoding' => 'gzip, deflate, br'
 
