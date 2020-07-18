@@ -75,7 +75,7 @@ class QuestionController extends AbstractController
             
             
             return $this->render('question/curl.html.twig',
-                    [ 'results' => $person,
+                    [ 'results' => $content,
                     ]);
            
         }
