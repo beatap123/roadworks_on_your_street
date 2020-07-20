@@ -54,14 +54,18 @@ class QuestionController extends AbstractController
             $contentType = $response->getHeaders()['content-type'][0];
             $content = $response->getContent();
              
-            $encoders = [new JsonEncoder()];
+            /*$encoders = [new JsonEncoder()];
             $normalizers = [new ObjectNormalizer()];
 
             $serializer = new Serializer($normalizers, $encoders);
-            $person = $serializer->serialize($content, 'json');
+            $person = $serializer->serialize($content, 'json');*/
+            
+            $json = json_decode($content, true);
+            print_r($json);
+
             
             
-            $entityManager = $this->getDoctrine()->getManager();
+            /*$entityManager = $this->getDoctrine()->getManager();
             
             $product = new Roboty();
             $product->setName('roboty takie');
@@ -70,13 +74,14 @@ class QuestionController extends AbstractController
             $product->setEndDate(new DateTime());
             
             $entityManager->persist($product);
-            $entityManager->flush();
+            $entityManager->flush();*/
 
             
             
-            return $this->render('question/curl.html.twig',
-                    [ 'results' => $content,
-                    ]);
+            /*return $this->render('question/curl.html.twig',
+                    [ 'results' => $json,
+                    ]);*/
            
         }
+            
 }
