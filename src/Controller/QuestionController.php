@@ -50,14 +50,10 @@ class QuestionController extends AbstractController
             $statusCode = $response->getStatusCode();
             $contentType = $response->getHeaders()['content-type'][0];
             $content = $response->toArray();
-            
-            
-            return new JsonResponse($content);
-           
         
+            
+            return new JsonResponse($content['result']);
 
-            
-            
             /*$entityManager = $this->getDoctrine()->getManager();
             
             $product = new Roboty();
