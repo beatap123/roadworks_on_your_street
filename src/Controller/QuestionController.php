@@ -51,8 +51,12 @@ class QuestionController extends AbstractController
             $contentType = $response->getHeaders()['content-type'][0];
             $content = $response->toArray();
         
+                        
+            return new JsonResponse($content['result']['Items']);
             
-            return new JsonResponse($content['result']);
+            //foreach ($catList as $id => $element){
+            //echo $id . ' - ' . $element;
+             //   }
 
             /*$entityManager = $this->getDoctrine()->getManager();
             
