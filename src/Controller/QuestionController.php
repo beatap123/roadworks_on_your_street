@@ -52,7 +52,8 @@ class QuestionController extends AbstractController
             $content = $response->toArray();
         
                         
-            return new JsonResponse($content['result']['Items']);
+            $new = $content['result']['Items'];
+            return new JsonResponse($new);
             
             //foreach ($catList as $id => $element){
             //echo $id . ' - ' . $element;
@@ -72,7 +73,7 @@ class QuestionController extends AbstractController
             
             
             /*return $this->render('question/curl.html.twig',
-                    [ 'results' => $person,
+                    [ 'results' => $new,
                     ]);*/
            
         }
