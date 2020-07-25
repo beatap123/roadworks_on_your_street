@@ -1,10 +1,10 @@
 # roadworks_on_your_street
 application for searching the roadworks on your street in Warsaw
-Table of contents
 
-    General info
-    Technologies
-    Installation
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Installation](#installation)
 
 General info
 
