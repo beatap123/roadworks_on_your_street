@@ -3,14 +3,9 @@ body
 	/* Background pattern from subtlepatterns.com */
 	/*background-image: url("img/hexellence.png*/
 	font-size: 16px;
-	font-family: 'Georgia', sans-serif;
+	font-family: 'Georgia', serif;
 	color: #111;
 }
-
-a:link    { color: #36b03c; text-decoration: none; }
-a:visited { color: #36b03c; }
-a:active  { color: #36b03c; }
-a:hover   { color: #37b93d; text-decoration: underline; }
 
 h1
 {
