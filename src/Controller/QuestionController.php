@@ -52,7 +52,8 @@ class QuestionController extends AbstractController
             $content = $response->toArray();
         
                         
-            $new = $content['result']['Items'];
+            $new = $content['result']['Items']['InvestItem'];
+            
             return new JsonResponse($new);
             
             //foreach ($catList as $id => $element){
