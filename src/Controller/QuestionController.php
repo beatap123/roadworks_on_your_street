@@ -54,6 +54,10 @@ class QuestionController extends AbstractController
                         
             $new = $content['result']['Items']['InvestItem'];
             
+            
+
+            $new[0]['StartDate'] = date("jS  F Y", strtotime($new[0]['StartDate'])); //to działa, teraz pętla dla wszystkich
+            
             return new JsonResponse($new);
             
             //foreach ($catList as $id => $element){
