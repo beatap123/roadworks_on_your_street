@@ -53,19 +53,14 @@ class QuestionController extends AbstractController
         
                         
             $new = $content['result']['Items']['InvestItem'];
-            
-            
-          
-            //$new[0]['StartDate'] = date("jS  F Y", strtotime($new[0]['StartDate'])); //to działa, teraz pętla dla wszystkich
-            $arr = array ($new[0]['StartDate'],$new[1]['StartDate'],$new[2]['StartDate'],$new[3]['StartDate'],$new[4]['StartDate'],$new[5]['StartDate']);
-            
-            foreach ($arr as $value){
-            $arr[0] = date("jS  F Y", strtotime($arr[0]));
-             
-            
-              };
-            
-            return new JsonResponse($arr);
+                        
+            for ($i = 0; $i < count($new); $i++) 
+            {
+            $new[$i]['StartDate'] = date("jS  F Y", strtotime($new[$i]['StartDate']));
+            $new[$i]['EndDate'] = date("jS  F Y", strtotime($new[$i]['EndDate']));
+             }
+
+            return new JsonResponse($new);
             
 
 
