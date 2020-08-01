@@ -55,14 +55,19 @@ class QuestionController extends AbstractController
             $new = $content['result']['Items']['InvestItem'];
             
             
+          
+            //$new[0]['StartDate'] = date("jS  F Y", strtotime($new[0]['StartDate'])); //to działa, teraz pętla dla wszystkich
+            $arr = array ($new[0]['StartDate'],$new[1]['StartDate'],$new[2]['StartDate'],$new[3]['StartDate'],$new[4]['StartDate'],$new[5]['StartDate']);
+            
+            foreach ($arr as $value){
+            $arr[0] = date("jS  F Y", strtotime($arr[0]));
+             
+            
+              };
+            
+            return new JsonResponse($arr);
+            
 
-            $new[0]['StartDate'] = date("jS  F Y", strtotime($new[0]['StartDate'])); //to działa, teraz pętla dla wszystkich
-            
-            return new JsonResponse($new);
-            
-            //foreach ($catList as $id => $element){
-            //echo $id . ' - ' . $element;
-             //   }
 
             /*$entityManager = $this->getDoctrine()->getManager();
             
